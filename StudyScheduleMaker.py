@@ -3,28 +3,36 @@ class Course():
         self.name = name
         self.topics = []
         self.examDate = ''
+        self.topicOccurrence = 0
     
-    def self.addTopics(self, topicsList):
+    def addTopics(self, topicsList):
         for topic in topicsList:
-            self.topics.appemd(topic)
+            self.topics.append(topic)
         
-    def self.setExamDate(self, date):
+    def setExamDate(self, date):
         self.examDate = date
 
 def main():
     
     print("Welcome to the Study Schedule Maker!")
-    print("You just need to enter your classes, exam dates\n" + 
-        "and current date, and the program will then generate a study\n" + 
-        "schedule just for you!\n" +
+    print("You just need to enter your classes, exam dates,\n" + 
+        "and current date, and the program will then"
+        "generate a study schedule just for you!\n" +
         "Note: Please separeate your inputs with spaces unless instructed otherwise.")
     print("-" * 50)
     courseList = input("What are you classes? (separate each class by a space)\n").split(' ')
-    for course, i in enumerate(courseList):
+    print("\n")
+    for i, course in enumerate(courseList):
+        print("COURSE: " + course)
         courseList[i] = Course(course)
-        topics = input("What topics would you like to study in",str(course)),"?")
+        topics = input("What topics would you like to study in " + str(course) + "?\n")
         courseList[i].addTopics(topics)
-        examDate = input("When is your exam? (YYYY/MM/DD)")
+        examDate = input("When is your exam for " + str(course) + "? (YYYY/MM/DD)\n")
         courseList[i].setExamDate(examDate)
+        print("\n")
+    date = input("Finally, what is today's date? (YYYY/MM/DD)\n")
+    print("Thanks so much!")
+
+
 
 main()
